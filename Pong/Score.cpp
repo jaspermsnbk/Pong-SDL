@@ -20,7 +20,7 @@ void Score::_drawPlayerScore(int score, SDL_Renderer* r, Vec2 Offset, int scale 
 	SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
 		
 	if (score >= 0 && score < 4) {
-		_drawNum(nums[score], Offset, scale, err, r);
+		_drawNum(*(nums)[score], Offset, scale, err, r);
 	}
 	if (won) 
 	{
@@ -51,13 +51,11 @@ void Score::testNumbers(SDL_Renderer* r, Vec2 Offset, int scale)
 	int err;
 	SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
 
-	_drawNum(nums[0], Offset, scale, err, r);
-	Offset.x += scale * 3;
-	_drawNum(nums[1], Offset, scale, err, r);
-	Offset.x += scale * 3;
-	_drawNum(nums[2], Offset, scale, err, r);
-	Offset.x += scale * 3;
-	_drawNum(nums[3], Offset, scale, err, r);
+	for (size_t i = 0; i < 4; i++)
+	{
+		_drawNum(*(nums)[i], Offset, scale, err, r);
+		Offset.x += scale * 3;
+	}
 	
 }
 void Score::_applyOffsetScale(SDL_Rect& r, Vec2 offset, int scale)
@@ -77,4 +75,10 @@ void Score::_removeOffsetScale(SDL_Rect& r, Vec2 offset, int scale)
 	r.y /= scale;
 	r.w /= scale;
 	r.h /= scale;
+}
+Score::~Score() {
+	free(num_0);
+	free(num_1);
+	free(num_2);
+	free(num_3);
 }
