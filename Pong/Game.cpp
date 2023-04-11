@@ -20,7 +20,6 @@ Game::~Game()
 {
 }
 
-
 // Initialize the game.
 bool Game::Initialize()
 {
@@ -52,14 +51,14 @@ bool Game::Initialize()
 
 	_player1 = Paddle(
 		10,							//x
-		WINDOW_HEIGHT / 2,			//y
+		WINDOW_HEIGHT / 2 - 50,		//y
 		15, 100,					//width
 		15,							//height
 		WINDOW_HEIGHT - 15			//bottom limit
 	);
 	_player2 = Paddle(
 		1004,						//x
-		WINDOW_HEIGHT / 2,			//y
+		WINDOW_HEIGHT / 2 - 50,		//y
 		15,							//width
 		100,						//height
 		15,							//top limit
@@ -121,7 +120,7 @@ void Game::_processInput()
 		_bIsRunning = false;
 	}
 
-	if (state[SDL_SCANCODE_RETURN] && won != 0)
+	if (state[SDL_SCANCODE_RETURN] && won != 0) //restart the game if game is over and enter pressed
 	{
 		won = 0;
 		_s.player1Score = 0;
@@ -183,26 +182,21 @@ void Game::_updateGame()
 		if (_s.player2Score == 3) 
 		{
 			won = 2;
-			
+			return;
 		}
-		else 
-		{
-			_s.player2Score++;
-			_restartBall();
-		}
+		_s.player2Score++;
+		_restartBall();
 	}
 	if (_ballPos.x > WINDOW_WIDTH) 
 	{
-		if (_s.player1Score == 3) 
+		if (_s.player1Score == 3)
 		{
 			won = 1;
-			
+			return;
 		}
-		else 
-		{
-			_s.player1Score++;
-			_restartBall();
-		}
+		_s.player1Score++;
+		_restartBall();
+		
 	}
 
 }
