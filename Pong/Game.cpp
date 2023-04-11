@@ -51,21 +51,21 @@ bool Game::Initialize()
 	// pong specific init
 
 	_player1 = Paddle(
-		10,					//x
+		10,							//x
 		WINDOW_HEIGHT / 2,			//y
-		15, 100,			//width
-		15,					//height
+		15, 100,					//width
+		15,							//height
 		WINDOW_HEIGHT - 15			//bottom limit
 	);
 	_player2 = Paddle(
-		1004,				//x
+		1004,						//x
 		WINDOW_HEIGHT / 2,			//y
-		15,					//width
-		100,				//height
-		15,					//top limit
+		15,							//width
+		100,						//height
+		15,							//top limit
 		WINDOW_HEIGHT - 15,			//bottom limit
-		SDL_SCANCODE_I,     //up key
-		SDL_SCANCODE_K		//down key
+		SDL_SCANCODE_I,				//up key
+		SDL_SCANCODE_K				//down key
 	);    
 
 

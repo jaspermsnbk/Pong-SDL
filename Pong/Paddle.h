@@ -2,7 +2,9 @@
 #include "Vec2.h"
 #include "SDL.h"
 #include <utility>
-
+/*
+Paddle class of the game pong
+*/
 class Paddle
 {
 private:
@@ -53,18 +55,22 @@ public:
 	void setUpDownKeys(SDL_Scancode up, SDL_Scancode down);
 
 	/*
-	
+	Takes a state array from the SDL_GetKeyboardState func and processes any input
 	*/
 	void processInput(const Uint8* state);
 
-	void update(float * deltaTime);
 	/*
+	call this in the update func of the game. 
+	*/
+	void update(float * deltaTime);
 	
+	/*
+	call this in the draw func of the game
 	*/
 	void draw(SDL_Renderer* r);
 
 	/*
-	
+	decides if this paddle has collided with a rect
 	*/
 	bool collided(const SDL_Rect & other);
 };

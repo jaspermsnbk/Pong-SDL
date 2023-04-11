@@ -28,7 +28,7 @@ public:
 	// .03 == medium
 	// .1 == hard
 	// 1 == EXTREME
-	const float DIFF = .1; 
+	const float DIFF = 1; 
 	
 private:
 	void _processInput();
