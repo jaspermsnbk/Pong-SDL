@@ -35,7 +35,7 @@ private:
 
 	void _updateGame();
 	void _generateOutput();
-	void drawDashedLine(SDL_Renderer* r, int offsetX, int w, int h, int density, int gap);
+	void _drawDashedLine(SDL_Renderer* r, int offsetX, int w, int h, int density, int gap);
 	void _restartBall();
 	// SDL window and renderer.
 	SDL_Window *_pWindow;

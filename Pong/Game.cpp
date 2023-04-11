@@ -67,11 +67,6 @@ bool Game::Initialize()
 		SDL_SCANCODE_I,				//up key
 		SDL_SCANCODE_K				//down key
 	);    
-
-
-	
-
-
 	return true;
 }
 
@@ -169,34 +164,42 @@ void Game::_updateGame()
 	}
 	
 	// player 1
-	if (_ballVel.x < 0 && _player1.collided(_ball)) {
+	if (_ballVel.x < 0 && _player1.collided(_ball)) 
+	{
 		_ballVel.x *= -1 * (1 + DIFF);
 		_ballVel.y *= 1 + DIFF;
 	}
 
 	// player 2
-	if (_ballVel.x > 0 && _player2.collided(_ball)) {
+	if (_ballVel.x > 0 && _player2.collided(_ball)) 
+	{
 		_ballVel.x *= -1 * (1 + DIFF);
 		_ballVel.y *= 1 + DIFF;
 	}
 
 	//out of bounds
-	if (_ballPos.x < 0 - _ball.w ) {
-		if (_s.player2Score == 3) {
+	if (_ballPos.x < 0 - _ball.w ) 
+	{
+		if (_s.player2Score == 3) 
+		{
 			won = 2;
 			
 		}
-		else {
+		else 
+		{
 			_s.player2Score++;
 			_restartBall();
 		}
 	}
-	if (_ballPos.x > WINDOW_WIDTH) {
-		if (_s.player1Score == 3) {
+	if (_ballPos.x > WINDOW_WIDTH) 
+	{
+		if (_s.player1Score == 3) 
+		{
 			won = 1;
 			
 		}
-		else {
+		else 
+		{
 			_s.player1Score++;
 			_restartBall();
 		}
@@ -230,7 +233,7 @@ void Game::_generateOutput()
 
 	//draw dashed line down middle of screen
 	SDL_SetRenderDrawColor(_pRenderer, 255, 255, 255, 255);
-	drawDashedLine(_pRenderer, WINDOW_WIDTH / 2, 3, WINDOW_HEIGHT, 20, 10);
+	_drawDashedLine(_pRenderer, WINDOW_WIDTH / 2, 3, WINDOW_HEIGHT, 20, 10);
 	//draw score
 	_s.drawScore(_pRenderer, { WINDOW_WIDTH /2 - 30, WINDOW_HEIGHT/2 - 20}, 4, won);
 	
@@ -238,7 +241,8 @@ void Game::_generateOutput()
 	SDL_RenderPresent(_pRenderer);
 }
 
-void Game::drawDashedLine(SDL_Renderer* r, int offsetX, int w, int h, int density, int gap) {
+void Game::_drawDashedLine(SDL_Renderer* r, int offsetX, int w, int h, int density, int gap) 
+{
 	for (int i = 0; i < density; i++)
 	{
 		SDL_Rect temp{ 

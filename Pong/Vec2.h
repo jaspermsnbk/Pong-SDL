@@ -5,7 +5,8 @@ public:
 	int x;
 	int y;
 
-	Vec2 operator * (Vec2 & rhs) {
+	Vec2 operator * (Vec2 & rhs) 
+	{
 		return {x * rhs.x, y * rhs.y};
 	}
 };
