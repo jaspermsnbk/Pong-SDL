@@ -123,9 +123,9 @@ void Game::_processInput()
 	if (state[SDL_SCANCODE_RETURN] && won != 0) //restart the game if game is over and enter pressed
 	{
 		won = 0;
+		_restartBall();
 		_s.player1Score = 0;
 		_s.player2Score = 0;
-		_restartBall();
 	}
 }
 
